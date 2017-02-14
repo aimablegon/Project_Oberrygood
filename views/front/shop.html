@@ -13,7 +13,7 @@
                   </div>
                   <div class="notice_pop nocice_mobile">
                       <div class="popup_img">
-                        <img src="images/popup/notice_mobile.jpg" alt="notice_pop_mobile" usemap='#notice_pop_mobile' />
+                        <img src="images/popup/notice_mobile2.jpg" alt="notice_pop_mobile" usemap='#notice_pop_mobile' />
                         <map id="notice_pop_mobile" name="notice_pop_mobile">
                           <area id="notice_mobile_today" shape="rect" coords="200, 175, 300, 200" href="#" alt=""/>
                           <area id="notice_mobile_close" shape="rect" coords="265, 5, 295, 35" href="#" alt="" />
@@ -80,7 +80,8 @@
 	                                    <div class="product-price">
 	                                        <span>￦{{item.price | number}}</span>
 	                                        <!-- <a href="addCart?productId={{item.productId}}&price={{item.price}}">장바구니에 담기</a> -->
-                                            <button type="button" name="button" onclick="location.href='addCart?productId={{item.productId}}&price={{item.price}}&quantity=1'">장바구니 담기</button>
+                                            <!-- <button type="button" name="button" onclick="location.href='addCart?productId={{item.productId}}&price={{item.price}}&quantity=1'">장바구니 담기</button> -->
+                                            <button type="button" name="button">￦{{item.price | number}}</button
 	                                    </div>
 	                                </li>
                                 {% endfor %}

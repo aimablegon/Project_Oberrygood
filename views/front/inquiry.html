@@ -17,9 +17,9 @@
                                             <li>
                                                 <a href="mypage_info.html">정보수정</a>
                                             </li>
-                                            <li>
+                                            <!-- <li>
                                                 <a href="cart.html">장바구니</a>
-                                            </li>
+                                            </li> -->
                                             <li>
                                                 <a href="buy_info.html">구매정보</a>
                                             </li>
@@ -81,7 +81,7 @@
 					                    {% if totalCount % pageSize > 0 %}
 					                    	{% set totalPage = totalPage + 1%}
 					                    {% endif %}
-					                    
+
 					                    {% set num =  currentPage-1  %}
 					                    {% set startPage = Math.floor(num / 10) * 10 + 1%}
 										{% set endPage = startPage + 10 - 1 %}
@@ -93,7 +93,7 @@
 				                        {% else %}
 				                     	 	<a class="prevposts-link transition"><i class="fa fa-chevron-left"></i></a>
 				                        {% endif %}
-				                        
+
 				                        {% for i in Array(endPage-startPage+1) %}
 				                        	{% set page =  startPage + loop.index-1 %}
 				                       		{% if currentPage == page %}
@@ -102,7 +102,7 @@
 				                        		<a href="?page={{page}}" class="transition">{{page}}</a>
 				                        	{% endif %}
 				                        {% endfor %}
-				                                                
+
 				                        {% if endPage < totalPage %}
 				                      		<a href="?page={{currentPage+1}}" class="nextposts-link transition"><i class="fa fa-chevron-right"></i></a>
 				                        {% else %}

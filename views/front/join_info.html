@@ -61,12 +61,12 @@
                                                     </div>
                                                     <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
                                                         <!--phone-->
-                                                        <input name="hp" type="tel" id="userPhone" onclick="" value="" placeholder="핸드폰번호 (*번호입력시 -는 빼주세요)" required="required"  maxlength="10">
+                                                        <input name="hp" type="tel" id="userPhone" onclick="" value="" placeholder="핸드폰번호 (*번호입력시 -는 빼주세요)" required="required"  maxlength="11">
                                                     </div>
                                                     <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
                                                         <!--mail-->
                                                         <input name="email" type="email" id="userEmail" onclick="" value="" placeholder="이메일 주소"  maxlength="50" required="required">
-                                                    </div> 
+                                                    </div>
                                                 </div>
                                                 <div class="join_a_tag">
                                                     <!-- <a href="join_confirm.html" class="btn">다음</a> -->
@@ -80,8 +80,8 @@
                     </section>
                     <!-- join_info end -->
                 </div>
-                
-                
+
+
 <script type="text/javascript">
 
 	$("#buttonCheck").click(function () {
@@ -103,11 +103,11 @@
 				alert(err);
 			}
 		});
-			
+
 	});
-	
+
     $("#reservation-form").submit(function() {
-    	
+
     	if($("#userId").val() != $("#checkUserId").val()) {
     		alert("아이디 중복확인을 해주십시요.");
     		return false;
@@ -116,9 +116,9 @@
     	if($("input[name='pwd']").val() != $("input[name='pwd_check']").val()) {
     		alert("비밀번호를 확인해 주십시요.");
     		return false;
-    	}    	
-    	
-    	
+    	}
+
+
         return true;
     });
 

@@ -16,9 +16,9 @@
                                       <li>
                                           <a href="mypage_info.html">정보수정</a>
                                       </li>
-                                      <li>
+                                      <!-- <li>
                                           <a href="cart.html" class="act-link">장바구니</a>
-                                      </li>
+                                      </li> -->
                                       <li>
                                           <a href="buy_info.html">구매정보</a>
                                       </li>
@@ -163,14 +163,14 @@
  		});
 
  		$("form").submit(function () {
-     		
+
      		if($("input[name='quantity']").length == 0) {
      			alert("장바구니에 상품이 없습니다.")
      			return false;
-     		} 
+     		}
 
  		});
- 		
+
  		$("input[name='quantity']").change(function () {
 
  			if($(this).val() == "") {

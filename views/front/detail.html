@@ -16,9 +16,9 @@
                                       <li>
                                           <a href="mypage_info.html">정보수정</a>
                                       </li>
-                                      <li>
+                                      <!-- <li>
                                           <a href="cart.html" class="act-link">장바구니</a>
-                                      </li>
+                                      </li> -->
                                       <li>
                                           <a href="buy_info.html">구매정보</a>
                                       </li>
@@ -73,7 +73,7 @@
                                     </table>
                                 </div>
                             </div>
-                           
+
                             <!-- CART TOTALS  -->
                             <div class="row">
                                 <div class="col-sm-5 col-sm-offset-7">
@@ -91,7 +91,7 @@
                                 </div>
                             </div>
                             <!-- /CART TOTALS  -->
-                            
+
 							<form id="order-info" method="post" action="/front/order">
 								<input type="hidden" id="orderId" name="orderId" />
 								<input type="hidden" id="impUid" name="impUid"/>
@@ -99,32 +99,32 @@
 								<input type="hidden" id="applyNum" name="applyNum"/>
 								<input type="hidden" id="paymentMethod" name="paymentMethod"/>
 								<input type="hidden" id="totalPrice" name="totalprice"/>
-								
-								{% if list.length > 1  %} 
+
+								{% if list.length > 1  %}
 									<input type="hidden" id="orderName" name="orderName" value="{{list[0].productName}} 외 {{list.length}}건"/>
 								{% else %}
 									<input type="hidden" id="orderName" name="orderName" value="{{list[0].productName}}"/>
 								{% endif %}
-								
+
 								{% for item in list %}
 									<input type="hidden" id="productId" name="productId" value="{{item.productId}}"/>
 									<input type="hidden" id="quantity"  name="quantity" value="{{item.quantity}}"/>
-								{% endfor %}								
-								
+								{% endfor %}
+
                                 <div class="bold-separator personal_h3" style="margin:60px 0 40px">
     								<h3 class="">배송정보</h3>
     							</div>
 								<fieldset>
-								
+
 									{%set byyerName = ''%}
 									{%set buyerTel = ''%}
 									{%set buyerEmail = ''%}
 									{%set buyerAddr1 = ''%}
 									{%set buyerAddr2 = ''%}
 									{%set buyerPostCode = ''%}
-									
+
 									{%set orderName = list[0].productName%}
-									
+
 									{% if session.userInfo %}
 										{%set byyerName = session.userInfo.name%}
 										{%set buyerTel = session.userInfo.hp%}
@@ -133,7 +133,7 @@
 										{%set buyerAddr2 = session.userInfo.address2%}
 										{%set buyerPostCode = session.userInfo.postCode%}
 									{% endif %}
-								
+
 									<legend style="text-indent:-99999px;">배송정보</legend>
 									<div class="row info_box" id="info_box">
 									  <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
@@ -178,7 +178,7 @@
 										  </div>
 										  <div class="col-md-6 col-sm-5 col-xs-9 join_info_box_d">
 											<!-- <textarea name="" class="mypage_input">서울특별시 마포구 아현동 트라펠리스 현대아파트 201동 1502호 235-61번지</textarea> -->
-											<input name="buyerAddr1" type="text" class="mypage_input table_left postcodify_address" id="buyerAddr1" onclick="" value="{{buyerAddr1}}" readonly="readonly"> 
+											<input name="buyerAddr1" type="text" class="mypage_input table_left postcodify_address" id="buyerAddr1" onclick="" value="{{buyerAddr1}}" readonly="readonly">
 										  </div>
                                           <div class="col-md-2 col-sm-3 col-xs-3 info_box_b ">
                                             <button id="btnAddr"  class="btn btn_a" type="button" style="padding:10px 17px">주소찾기</button>
@@ -203,7 +203,7 @@
 									</div>
 								</fieldset>
 							</form>
-<!-- 
+<!--
                             <form id="order-info" method="post" action="/front/order">
                                 <div class="bold-separator personal_h3" style="margin:60px 0 10px">
     								<h3 class="">결제정보</h3>
@@ -241,6 +241,31 @@
 					$(function(){
 						$("#btnAddr").postcodifyPopUp();
 						$("#btnPay").click(function(){
+							
+							
+
+							if($("input[name='buyerName']").val() == "") {
+								alert("이름(수취인)을 입력해주세요.");
+								return;
+							}
+							
+							if($("input[name='buyerTel']").val() == "") {
+								alert("핸드폰 번호를 입력해주세요.");
+								return;
+							}
+							
+							if($("input[name='buyerAddr1']").val() == "") {
+								alert("배송지 주소를 입력해주세요.");
+								return;
+							}
+							if($("input[name='buyerAddr2']").val() == "") {
+								alert("배송지 주소를 입력해주세요.");
+								return;
+							}
+							if($("input[name='buyerPostCode']").val() == "") {
+								alert("배송지 주소를 입력해주세요.");
+								return;
+							}
 
 							var IMP = window.IMP;
 							IMP.init('imp89915322'); // 'iamport' 대신 부여받은 "가맹점 식별코드"를 사용.
@@ -252,7 +277,7 @@
 					        $("#applyNum").val('000000');
 					        $("#paymentMethod").val('card');
 
-					        
+
 							IMP.request_pay({
 							    pg : 'inicis', // version 1.1.0부터 지원. 'kakao':카카오페이,'inicis':이니시스, 'html5_inicis':이니시스(웹표준결제), 'nice':나이스, 'jtnet':jtnet, 'uplus':LG유플러스, 'danal':다날
 							    pay_method : 'card', // 'card':신용카드, 'trans':실시간계좌이체, 'vbank':가상계좌, 'phone':휴대폰소액결제
@@ -266,7 +291,7 @@
 							    buyer_postcode : $('#buyerPostCode').val()
 							}, function(rsp) {
 							    if ( rsp.success ) {
-							    	
+
 							    	console.log(rsp);
 
 							        var impuid = rsp.imp_uid;
@@ -278,8 +303,7 @@
 							        $("#impUid").val(impuid);
 							        $("#paidAmount").val(paidamount);
 							        $("#applyNum").val(applynum);
-							        $("#paymentMethod").val('card');
-							        
+
 							        $("#order-info").submit();
 
 							    } else {

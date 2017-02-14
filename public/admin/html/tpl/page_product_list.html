@@ -5,7 +5,10 @@ angular.module('app').controller('myCtrl', ['$scope', '$rootScope', '$http', '$s
 	function($scope, $rootScope, $http, $sce, $stateParams, $location) {
 		
 		$scope.searchText	= $stateParams.searchText;
-		$scope.categoryId	= parseInt($stateParams.categoryId);
+		$scope.categoryId	= $stateParams.categoryId;
+		if($scope.categoryId) {
+			$scope.categoryId = parseInt($scope.categoryId);
+		}
 		$scope.pageSize = $rootScope.pageSize ? $rootScope.pageSize : "10";
 		$scope.Math=Math;
 

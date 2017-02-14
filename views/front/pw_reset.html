@@ -17,9 +17,9 @@
                                             <li>
                                                 <a href="mypage_info.html" class="act-link">정보수정</a>
                                             </li>
-                                            <li>
+                                            <!-- <li>
                                                 <a href="cart.html">장바구니</a>
-                                            </li>
+                                            </li> -->
                                             <li>
                                                 <a href="buy_info.html">구매정보</a>
                                             </li>
@@ -85,13 +85,13 @@
 <script type="text/javascript">
 
 $("#reservation-form").submit(function() {
-	
+
 	if($("input[name='pwd']").val() != $("input[name='pwd_check']").val()) {
 		alert("비밀번호를 확인해 주십시요.");
 		return false;
-	}    	
-	
-	
+	}
+
+
     return true;
 });
 </script>
